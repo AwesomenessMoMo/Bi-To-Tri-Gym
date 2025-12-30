@@ -14,9 +14,34 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 
 
+// CORS configuration - allow multiple origins for Railway deployment
+const allowedOrigins = [
+    process.env.CLIENT_URL,
+    process.env.RAILWAY_PUBLIC_DOMAIN,
+    process.env.FRONTEND_URL,
+    "http://localhost:3000"
+].filter(Boolean); // Remove undefined values
+
 app.use(cors({
-    origin: process.env.CLIENT_URL || process.env.RAILWAY_PUBLIC_DOMAIN || "http://localhost:3000",
-    credentials: true
+    origin: function (origin, callback) {
+        // Allow requests with no origin (mobile apps, Postman, etc.)
+        if (!origin) return callback(null, true);
+        
+        // In development, allow all origins
+        if (process.env.NODE_ENV !== 'production') {
+            return callback(null, true);
+        }
+        
+        // In production, check if origin is in allowed list
+        if (allowedOrigins.length === 0 || allowedOrigins.some(allowed => origin.includes(allowed.replace(/https?:\/\//, '')))) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 const fs = require("fs");
@@ -26,14 +51,26 @@ if (!fs.existsSync("uploads")) {
 }
 
 const db = mysql.createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    port: process.env.MYSQL_PORT,
+    host: process.env.MYSQL_HOST || "localhost",
+    user: process.env.MYSQL_USER || "root",
+    password: process.env.MYSQL_PASSWORD || "",
+    database: process.env.MYSQL_DATABASE || "bitotri",
+    port: process.env.MYSQL_PORT || 3306,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
+});
+
+// Test database connection
+db.getConnection((err, connection) => {
+    if (err) {
+        console.error("❌ Database connection failed:", err.message);
+        console.error("Please check your database configuration in .env file");
+        console.error("Required variables: MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE, MYSQL_PORT");
+    } else {
+        console.log("✅ Database connected successfully");
+        connection.release();
+    }
 });
 
 
@@ -56,10 +93,32 @@ app.get("/", (req, res) => {
     res.send("Bi To Tri Backend is running!");
 });
 
+// Health check endpoint
+app.get("/api/health", (req, res) => {
+    db.query("SELECT 1", (err) => {
+        if (err) {
+            return res.status(500).json({ 
+                status: "error", 
+                message: "Database connection failed",
+                error: err.message 
+            });
+        }
+        res.json({ 
+            status: "ok", 
+            message: "Backend and database are connected",
+            timestamp: new Date().toISOString()
+        });
+    });
+});
+
 app.get("/api/supplements", (req, res) => {
-    db.query("SELECT * FROM supplements", (err, r) =>
-        err ? res.status(500).json(err) : res.json(r)
-    );
+    db.query("SELECT * FROM supplements", (err, r) => {
+        if (err) {
+            console.error("Error fetching supplements:", err);
+            return res.status(500).json({ error: "Failed to fetch supplements", message: err.message });
+        }
+        res.json(r);
+    });
 });
 
 app.get("/api/supplements/:id", (req, res) => {
@@ -75,9 +134,13 @@ app.get("/api/supplements/:id", (req, res) => {
 });
 
 app.get("/api/clothes", (req, res) => {
-    db.query("SELECT * FROM clothes", (err, r) =>
-        err ? res.status(500).json(err) : res.json(r)
-    );
+    db.query("SELECT * FROM clothes", (err, r) => {
+        if (err) {
+            console.error("Error fetching clothes:", err);
+            return res.status(500).json({ error: "Failed to fetch clothes", message: err.message });
+        }
+        res.json(r);
+    });
 });
 
 app.get("/api/clothes/:id", (req, res) => {
@@ -93,9 +156,13 @@ app.get("/api/clothes/:id", (req, res) => {
 });
 
 app.get("/api/coaches", (req, res) => {
-    db.query("SELECT * FROM coaches", (err, r) =>
-        err ? res.status(500).json(err) : res.json(r)
-    );
+    db.query("SELECT * FROM coaches", (err, r) => {
+        if (err) {
+            console.error("Error fetching coaches:", err);
+            return res.status(500).json({ error: "Failed to fetch coaches", message: err.message });
+        }
+        res.json(r);
+    });
 });
 
 app.post("/api/signup", (req, res) => {
