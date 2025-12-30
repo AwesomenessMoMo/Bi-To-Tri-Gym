@@ -1,0 +1,115 @@
+.store-bg {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  background: url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=2000&q=80")
+    center/cover no-repeat fixed;
+}
+
+/* Dark overlay for readability */
+.store-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 0;
+}
+
+.store-container {
+  padding: 5rem 2rem;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.store-header h1 {
+  color: #ff0000;
+  font-size: 2.7rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.store-header p {
+  max-width: 650px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+  color: #e0e0e0;
+}
+
+.store-grid {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  flex-wrap: wrap;
+}
+
+.store-item {
+  width: 850px;
+  height: 560px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 15px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: 0.35s ease;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.store-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.45);
+}
+
+.store-image {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.store-item h2 {
+  color: #ff0000;
+  font-size: 2rem;
+  margin-top: 0.7rem;
+  text-transform: uppercase;
+}
+
+.left-item {
+  animation: slideLeft 0.9s ease forwards;
+  opacity: 0;
+}
+
+.right-item {
+  animation: slideRight 0.9s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(-80px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(80px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .store-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .store-item {
+    width: 95%;
+    height: auto;
+  }
+  .store-image {
+    height: 310px;
+  }
+}

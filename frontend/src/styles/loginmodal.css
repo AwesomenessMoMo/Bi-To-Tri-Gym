@@ -1,0 +1,149 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    background: #101010;
+    padding: 40px;
+    border-radius: 20px;
+    width: 420px;
+    position: relative;
+    border: 1px solid rgba(255, 0, 0, 0.45);
+    box-shadow: 0 0 35px rgba(255, 0, 0, 0.45);
+    animation: modalFade 0.25s ease-out;
+    text-align: center;
+}
+
+.modal-title {
+    color: white;
+    margin-bottom: 24px;
+    font-size: 1.85rem;
+    font-weight: 700;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #181818;
+    color: white;
+    font-size: 1.05rem;
+    outline: none;
+}
+
+.modal-input:focus {
+    border-color: #ff0000;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.35);
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper .modal-input {
+    width: 100%;
+    padding-right: 48px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 16px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    font-size: 1.15rem;
+    line-height: 1;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle:hover {
+    color: #ff0000;
+}
+
+
+.modal-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    background: #ff0000;
+    border: none;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 6px;
+}
+
+.modal-btn:hover {
+    background: #d10000;
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.6);
+}
+
+.modal-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.modal-switch {
+    margin-top: 18px;
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.modal-switch-link {
+    color: #ff0000;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal-switch-link:hover {
+    text-decoration: underline;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #ff0000;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.modal-close:hover {
+    color: white;
+}
+
+.error-text {
+    color: #ff4d4d;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+        transform: scale(0.93);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,222 @@
+.checkout-page {
+    min-height: 100vh;
+    background: #0a0a0a;
+    color: white;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkout-page h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.checkout-container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0 auto;
+}
+
+.order-summary {
+    background: #111;
+    padding: 1.8rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.order-summary h2 {
+    color: #ff0000;
+    margin-bottom: 1.2rem;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+    color: #ccc;
+}
+
+.checkout-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.checkout-img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #222;
+    background: #000;
+}
+
+.item-name {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-controls button {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.qty-controls button:hover {
+    background: red;
+    border-color: red;
+}
+
+.qty-controls span {
+    min-width: 22px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.checkout-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.checkout-right span {
+    font-weight: bold;
+    color: #fff;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.2s;
+}
+
+.remove-item:hover {
+    color: #ff0000;
+}
+
+.total {
+    margin-top: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ff0000;
+    text-align: right;
+}
+
+.payment-section {
+    background: #111;
+    padding: 2rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.payment-section h2 {
+    color: #ff0000;
+    margin-bottom: 1.5rem;
+}
+
+.pay-label {
+    color: #ddd;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.pay-input {
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid #333;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1rem;
+    outline: none;
+    margin-bottom: 1rem;
+    transition: 0.2s;
+}
+
+.pay-input:focus {
+    border-color: #ff0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+.card-input-wrapper {
+    position: relative;
+}
+
+.card-logo {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+}
+
+.pay-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.pay-col {
+    flex: 1;
+}
+
+.pay-btn {
+    width: 100%;
+    padding: 14px;
+    background: #ff0000;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 1rem;
+}
+
+.pay-btn:hover {
+    background: #cc0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .pay-row {
+        flex-direction: column;
+    }
+
+    .checkout-img {
+        width: 58px;
+        height: 58px;
+    }
+
+    .checkout-item {
+        gap: 10px;
+    }
+}

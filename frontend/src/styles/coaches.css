@@ -1,0 +1,106 @@
+.coaches-hero {
+    background: url("https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=2000&q=80") no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    text-align: center;
+}
+
+.coaches-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+}
+
+.coaches-hero h1 {
+    position: relative;
+    color: #ff0000;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 2;
+    margin-bottom: 0.4rem;
+}
+
+.coaches-hero p {
+    position: relative;
+    font-size: 1.05rem;
+    color: #f0f0f0;
+    max-width: 680px;
+    margin-top: 0.2rem;
+    line-height: 1.6;
+    z-index: 2;
+}
+
+.coaches-section {
+    background: #0a0a0a;
+    padding: 3rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+}
+
+.coach-card {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 1.8rem 1.3rem;
+    border-radius: 15px;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.25);
+    transition: 0.3s ease;
+}
+
+.coach-card:hover,
+.coach-card.active {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    border: 1px solid red;
+}
+
+.coach-card img {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ff0000;
+    margin-bottom: 0.8rem;
+}
+
+.coach-card h3 {
+    color: white;
+    margin-bottom: 0.3rem;
+    font-size: 1.25rem;
+}
+
+.coach-card p {
+    color: #d0d0d0;
+    font-size: 0.95rem;
+}
+
+.inline-schedule-wrapper {
+    width: 100%;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    background: #0a0a0a;
+}
+
+.inline-schedule-box {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(12, 12, 12, 0.95);
+    border-radius: 18px;
+    padding: 26px;
+    border: 1px solid rgba(255,0,0,0.3);
+    box-shadow: 0 0 25px rgba(255,0,0,0.35);
+}

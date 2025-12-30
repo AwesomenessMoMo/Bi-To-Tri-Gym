@@ -1,0 +1,166 @@
+.subplans-container {
+    background: linear-gradient(90deg, #3a0d0d, #8b2b2b);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    padding-top: 40px;  
+    padding-bottom: 40px;
+}
+
+.subplans-header {
+    max-width: 700px; 
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.subplans-header h1 {
+    font-size: 2.3rem;
+    color: #ff0000;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1.5px;
+}
+
+.subplans-header p {
+    color: #f5f5f5;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 auto;
+}
+
+.plan-section-title {
+    font-size: 1.8rem;
+    color: #ff0000;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-bottom: 25px; 
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.subplans-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+
+    margin-bottom: 1.5rem;
+}
+
+.subplan-item {
+    background: #fff;
+    color: #222;
+    border-radius: 12px;
+
+    padding: 1.4rem;
+    flex: 1;
+    min-width: 260px;
+    max-width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subplan-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.45);
+}
+
+.subplan-item h2 {
+    color: #b00000;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.subplan-item p {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+.subplan-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.6rem 0 1rem;
+    text-align: left;
+}
+
+.subplan-item ul li {
+    margin: 0.4rem 0;
+    padding-left: 18px;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.subplan-item ul li::before {
+    content: "•";
+    color: #b00000;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.subscribe-button {
+    background-color: #b00000;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 22px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.subscribe-button:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.subplan-savings {
+    display: inline-block;
+    color: #b00000;
+    font-weight: bold;
+    font-size: 0.9rem;
+
+    background: #ffe5e5;
+    padding: 2px 8px;
+    border-radius: 12px;
+
+    margin-left: 6px;
+}
+
+/* Responive */
+@media (max-width: 700px) {
+    .subplans-header h1 {
+        font-size: 1.9rem;
+    }
+
+    .plan-section-title {
+        font-size: 1.3rem;
+    }
+
+    .subplan-item {
+        min-width: 100%;
+        max-width: 340px;
+    }
+}

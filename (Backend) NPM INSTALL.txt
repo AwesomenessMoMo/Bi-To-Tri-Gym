@@ -1,0 +1,2 @@
+npm install express mysql2 cors dotenv multer bcryptjs jsonwebtoken axios
+npm install --save-dev nodemon
