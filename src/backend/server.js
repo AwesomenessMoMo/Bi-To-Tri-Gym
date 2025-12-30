@@ -13,6 +13,9 @@ const app = express();
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+
 
 // CORS configuration - allow multiple origins for Railway deployment
 const allowedOrigins = [
@@ -25,16 +28,15 @@ const allowedOrigins = [
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Allow requests with no origin (mobile apps, Postman, etc.)
+    
         if (!origin) return callback(null, true);
         
-        // In development, allow all origins
+
         if (process.env.NODE_ENV !== 'production') {
             return callback(null, true);
         }
         
-        // In production, check if origin is in allowed list
-        // Check exact match first, then check domain match
+    
         const isAllowed = allowedOrigins.some(allowed => {
             const allowedDomain = allowed.replace(/https?:\/\//, '');
             const originDomain = origin.replace(/https?:\/\//, '');
@@ -175,12 +177,22 @@ app.post("/api/signup", (req, res) => {
 app.post("/api/login", (req, res) => {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+        return res.status(400).json({ message: "Email and password are required" });
+    }
+
     db.query(
         "SELECT id,name,email,role,password FROM users WHERE LOWER(email)=?",
         [email.toLowerCase()],
         (err, r) => {
-            if (!r.length || r[0].password !== password)
+            if (err) {
+                console.error("Login database error:", err);
+                return res.status(500).json({ message: "Database error" });
+            }
+
+            if (!r.length || r[0].password !== password) {
                 return res.status(401).json({ message: "Invalid credentials" });
+            }
 
             res.json({
                 user: {
@@ -188,7 +200,42 @@ app.post("/api/login", (req, res) => {
                     name: r[0].name,
                     email: r[0].email,
                     role: r[0].role
-                }
+                },
+                token: null // Plain text password auth - no JWT token needed
+            });
+        }
+    );
+});
+
+// Also support /api/auth/login endpoint for frontend compatibility
+app.post("/api/auth/login", (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: "Email and password are required" });
+    }
+
+    db.query(
+        "SELECT id,name,email,role,password FROM users WHERE LOWER(email)=?",
+        [email.toLowerCase()],
+        (err, r) => {
+            if (err) {
+                console.error("Login database error:", err);
+                return res.status(500).json({ message: "Database error" });
+            }
+
+            if (!r.length || r[0].password !== password) {
+                return res.status(401).json({ message: "Invalid credentials" });
+            }
+
+            res.json({
+                user: {
+                    id: r[0].id,
+                    name: r[0].name,
+                    email: r[0].email,
+                    role: r[0].role
+                },
+                token: null // Plain text password auth - no JWT token needed
             });
         }
     );
