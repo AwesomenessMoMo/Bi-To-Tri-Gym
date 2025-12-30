@@ -4,11 +4,6 @@ import { toast } from "react-toastify";
 
 import API from "../config/api";
 
-fetch(`${API}/api/coaches`)
-fetch(`${API}/api/supplements`)
-fetch(`${API}/api/clothes`)
-fetch(`${API}/api/bookings`)
-
 const IMG = img => img ? `${API}/uploads/${img}` : "/images/placeholder.png";
 
 const SUPPLEMENT_CATEGORIES = [
@@ -30,10 +25,37 @@ const AdminPage = () => {
   const [newClothes, setNewClothes] = useState({ name:"", category:CLOTHES_CATEGORIES[0], price:"", color:"", image:null, preview:null });
 
   const loadData = () => {
-    fetch(`${API}/api/coaches`).then(r=>r.json()).then(setCoaches);
-    fetch(`${API}/api/supplements`).then(r=>r.json()).then(setSupplements);
-    fetch(`${API}/api/clothes`).then(r=>r.json()).then(setClothes);
-    fetch(`${API}/api/admin/bookings`).then(r=>r.json()).then(setBookings);
+    fetch(`${API}/api/coaches`)
+      .then(r => r.json())
+      .then(setCoaches)
+      .catch(err => {
+        console.error("Failed to load coaches:", err);
+        toast.error("Failed to load coaches");
+      });
+    
+    fetch(`${API}/api/supplements`)
+      .then(r => r.json())
+      .then(setSupplements)
+      .catch(err => {
+        console.error("Failed to load supplements:", err);
+        toast.error("Failed to load supplements");
+      });
+    
+    fetch(`${API}/api/clothes`)
+      .then(r => r.json())
+      .then(setClothes)
+      .catch(err => {
+        console.error("Failed to load clothes:", err);
+        toast.error("Failed to load clothes");
+      });
+    
+    fetch(`${API}/api/admin/bookings`)
+      .then(r => r.json())
+      .then(setBookings)
+      .catch(err => {
+        console.error("Failed to load bookings:", err);
+        toast.error("Failed to load bookings");
+      });
   };
 
   useEffect(loadData, []);

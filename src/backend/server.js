@@ -15,7 +15,7 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: process.env.CLIENT_URL || process.env.RAILWAY_PUBLIC_DOMAIN || "http://localhost:3000",
     credentials: true
 }));
 
