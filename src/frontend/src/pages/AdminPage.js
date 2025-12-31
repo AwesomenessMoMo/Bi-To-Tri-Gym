@@ -61,29 +61,66 @@ const AdminPage = () => {
   useEffect(loadData, []);
 
   const addItem = async (url, data, reset) => {
-    const fd = new FormData();
-    Object.entries(data).forEach(([k,v]) => v && k!=="preview" && fd.append(k,v));
+    try {
+      const fd = new FormData();
+      Object.entries(data).forEach(([k,v]) => v && k!=="preview" && fd.append(k,v));
 
-    const res = await fetch(url,{method:"POST",body:fd});
-    if(!res.ok) return toast.error("Add failed");
+      const res = await fetch(url,{method:"POST",body:fd});
+      const result = await res.json();
+      
+      if(!res.ok) {
+        const errorMsg = result.message || "Add failed";
+        toast.error(errorMsg);
+        return;
+      }
 
-    toast.success("Added");
-    reset();
-    loadData();
+      toast.success("Added");
+      reset();
+      loadData();
+    } catch (err) {
+      console.error("Add item error:", err);
+      toast.error("Failed to add item");
+    }
   };
 
   const updateImage = async (url,file) => {
-    const fd = new FormData();
-    fd.append("image",file);
-    await fetch(url,{method:"PUT",body:fd});
-    toast.success("Image updated");
-    loadData();
+    try {
+      const fd = new FormData();
+      fd.append("image",file);
+      const res = await fetch(url,{method:"PUT",body:fd});
+      const result = await res.json();
+      
+      if(!res.ok) {
+        const errorMsg = result.message || "Image update failed";
+        toast.error(errorMsg);
+        return;
+      }
+      
+      toast.success("Image updated");
+      loadData();
+    } catch (err) {
+      console.error("Update image error:", err);
+      toast.error("Failed to update image");
+    }
   };
 
   const del = async url => {
-    await fetch(url,{method:"DELETE"});
-    toast.success("Deleted");
-    loadData();
+    try {
+      const res = await fetch(url,{method:"DELETE"});
+      const result = await res.json();
+      
+      if(!res.ok) {
+        const errorMsg = result.message || "Delete failed";
+        toast.error(errorMsg);
+        return;
+      }
+      
+      toast.success("Deleted");
+      loadData();
+    } catch (err) {
+      console.error("Delete error:", err);
+      toast.error("Failed to delete item");
+    }
   };
 
   const previewFile = (file,setter) =>
