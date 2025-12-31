@@ -16,11 +16,16 @@
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
     z-index: 0;
+    transition: background 0.3s ease;
+}
+
+[data-theme="light"] .coaches-hero::before {
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .coaches-hero h1 {
     position: relative;
-    color: #ff0000;
+    color: var(--accent-color);
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -31,21 +36,30 @@
 .coaches-hero p {
     position: relative;
     font-size: 1.05rem;
-    color: #f0f0f0;
+    color: var(--text-primary);
     max-width: 680px;
     margin-top: 0.2rem;
     line-height: 1.6;
     z-index: 2;
 }
 
+[data-theme="light"] .coaches-hero p {
+    color: #000;
+}
+
 .coaches-section {
-    background: #0a0a0a;
+    background: var(--bg-secondary);
     padding: 3rem 1.5rem;
     display: flex;
     justify-content: center;
     gap: 1.8rem;
     flex-wrap: wrap;
     margin-bottom: 0;
+    transition: background-color 0.3s ease;
+}
+
+[data-theme="light"] .coaches-section {
+    background: #ffffff;
 }
 
 .coach-card-wrapper {
@@ -75,11 +89,22 @@
     transition: 0.3s ease;
 }
 
+[data-theme="light"] .coach-card {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
 .coach-card:hover,
 .coach-card.active {
     transform: translateY(-4px);
     box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
-    border: 1px solid red;
+    border: 1px solid var(--accent-color);
+}
+
+[data-theme="light"] .coach-card:hover,
+[data-theme="light"] .coach-card.active {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
 }
 
 .coach-card img {
@@ -87,18 +112,18 @@
     height: 115px;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid #ff0000;
+    border: 3px solid var(--accent-color);
     margin-bottom: 0.8rem;
 }
 
 .coach-card h3 {
-    color: white;
+    color: var(--text-primary);
     margin-bottom: 0.3rem;
     font-size: 1.25rem;
 }
 
 .coach-card p {
-    color: #d0d0d0;
+    color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
