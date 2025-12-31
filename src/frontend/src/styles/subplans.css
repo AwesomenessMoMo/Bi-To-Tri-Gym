@@ -16,7 +16,7 @@
     padding-bottom: 40px;
 }
 
-/* Animated Background */
+/* Animated Background - Multi-layer gradient animation */
 .subplans-container::before {
     content: "";
     position: absolute;
@@ -24,18 +24,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        45deg,
-        #1a0000,
-        #3a0d0d,
-        #5a1a1a,
-        #8b2b2b,
-        #5a1a1a,
-        #3a0d0d,
-        #1a0000
-    );
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: 
+        linear-gradient(45deg, #0a0000 0%, #1a0000 25%, #2d0000 50%, #1a0000 75%, #0a0000 100%),
+        linear-gradient(135deg, #3a0d0d 0%, #5a1a1a 25%, #8b2b2b 50%, #5a1a1a 75%, #3a0d0d 100%),
+        linear-gradient(225deg, #1a0000 0%, #3a0d0d 25%, #5a1a1a 50%, #3a0d0d 75%, #1a0000 100%);
+    background-size: 400% 400%, 300% 300%, 500% 500%;
+    background-blend-mode: screen;
+    animation: gradientShift 20s ease infinite, gradientRotate 25s linear infinite;
     z-index: 0;
 }
 
@@ -47,33 +42,73 @@
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 0, 0, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%);
-    animation: pulseGlow 8s ease-in-out infinite;
+        radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255, 50, 50, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 40% 20%, rgba(255, 0, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 60% 70%, rgba(200, 0, 0, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 30%, rgba(255, 30, 30, 0.2) 0%, transparent 35%);
+    animation: pulseGlow 10s ease-in-out infinite, radialMove 15s ease-in-out infinite;
     z-index: 0;
 }
 
 @keyframes gradientShift {
     0% {
-        background-position: 0% 50%;
+        background-position: 0% 50%, 100% 50%, 50% 0%;
     }
-    50% {
-        background-position: 100% 50%;
+    33% {
+        background-position: 100% 50%, 0% 50%, 50% 100%;
+    }
+    66% {
+        background-position: 50% 100%, 50% 0%, 0% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 0% 50%, 100% 50%, 50% 0%;
+    }
+}
+
+@keyframes gradientRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
 @keyframes pulseGlow {
     0%, 100% {
-        opacity: 0.5;
+        opacity: 0.6;
         transform: scale(1);
     }
-    50% {
+    25% {
         opacity: 0.8;
+        transform: scale(1.05);
+    }
+    50% {
+        opacity: 0.7;
         transform: scale(1.1);
+    }
+    75% {
+        opacity: 0.85;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes radialMove {
+    0% {
+        background-position: 20% 50%, 80% 80%, 40% 20%, 60% 70%, 90% 30%;
+    }
+    25% {
+        background-position: 30% 40%, 70% 90%, 50% 30%, 50% 60%, 80% 40%;
+    }
+    50% {
+        background-position: 40% 60%, 60% 70%, 60% 10%, 40% 80%, 70% 20%;
+    }
+    75% {
+        background-position: 25% 55%, 75% 85%, 35% 25%, 55% 75%, 85% 35%;
+    }
+    100% {
+        background-position: 20% 50%, 80% 80%, 40% 20%, 60% 70%, 90% 30%;
     }
 }
 
