@@ -173,7 +173,7 @@
 .product-card h3 {
   font-size: 1rem;
   margin: 0.5rem 0;
-  color: var(--text-primary);
+  color: white;
 }
 
 .product-card p {
