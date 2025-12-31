@@ -16,9 +16,6 @@ const Supplements = () => {
   const [sortType, setSortType] = useState("");
   const [cardSize, setCardSize] = useState("large");
 
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-
   useEffect(() => {
     fetch(`${API}/api/supplements`)
       .then(res => res.json())
@@ -48,11 +45,6 @@ const Supplements = () => {
     .filter(item => {
       if (category === "All") return true;
       return item.category?.toLowerCase().includes(category.toLowerCase());
-    })
-    .filter(item => {
-      if (minPrice && item.price < minPrice) return false;
-      if (maxPrice && item.price > maxPrice) return false;
-      return true;
     })
     .sort((a, b) => {
       if (sortType === "low-high") return a.price - b.price;
@@ -90,20 +82,6 @@ const Supplements = () => {
           <option>Fat Burner</option>
           <option>Mass Gainer</option>
         </select>
-
-        <label>Price Range</label>
-        <input
-          type="number"
-          placeholder="Min"
-          value={minPrice}
-          onChange={e => setMinPrice(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Max"
-          value={maxPrice}
-          onChange={e => setMaxPrice(e.target.value)}
-        />
 
         <label>Sort</label>
         <select value={sortType} onChange={e => setSortType(e.target.value)}>
