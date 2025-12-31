@@ -483,7 +483,6 @@ db.getConnection((err, connection) => {
 module.exports = db;
 ```
 
-
 ## 🚢 Deployment
 
 ### Railway Deployment
@@ -513,32 +512,6 @@ The application is deployed on Railway for both backend and frontend.
 - **Frontend**: https://bitotri-frontend-production.up.railway.app
 - **Backend**: https://bitotri-production.up.railway.app
 
-## 📸 Screenshots
-
-> **Note**: Add screenshots of your application here. Include:
-> - Home page
-> - Login/Signup pages
-> - Store pages (Supplements, Clothes)
-> - Coach booking interface
-> - Admin dashboard
-> - Cart and checkout
-> - Mobile responsive views
-
-### Example Screenshot Structure:
-```
-## Screenshots
-
-### Home Page
-![Home Page](./screenshots/home.png)
-
-### Store - Supplements
-![Supplements](./screenshots/supplements.png)
-
-### Coach Booking
-![Booking](./screenshots/booking.png)
-
-### Admin Dashboard
-![Admin](./screenshots/admin.png)
 ```
 ## 👤 Author
 
