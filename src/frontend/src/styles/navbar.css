@@ -36,14 +36,16 @@
 }
 
 .search-input {
-  width: 300px;
-  padding: 10px 42px 10px 16px;
+  width: 420px;
+  padding: 10px 42px 10px 18px;
   border-radius: 50px;
   border: 1px solid #333;
   background: #111;
   color: #fff;
   outline: none;
   transition: 0.25s ease;
+  font-size: 0.95rem;
+  box-sizing: border-box;
 }
 
 .search-input::placeholder {
