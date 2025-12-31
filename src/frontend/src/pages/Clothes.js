@@ -89,7 +89,10 @@ const Clothes = () => {
 
       <div className="clothes-content">
         <div className="header-row">
-          <h1>{category === "All" ? "Clothes" : category}</h1>
+          <div className="header-text">
+            <h1>{category === "All" ? "Clothes" : category}</h1>
+            <p className="page-subtitle">Gear up with our premium gym apparel - comfortable, stylish, and built for performance</p>
+          </div>
 
           <div className="size-controls">
             <button

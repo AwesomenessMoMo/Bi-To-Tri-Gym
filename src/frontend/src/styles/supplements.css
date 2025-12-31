@@ -87,8 +87,26 @@
 .header-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.header-text {
+  flex: 1;
+}
+
+.header-row h1 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+  font-size: 2.5rem;
+}
+
+.page-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 600px;
 }
 
 .size-controls button {
@@ -243,6 +261,11 @@
 
   .header-row h1 {
     font-size: 1.3rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.85rem;
+    max-width: 100%;
   }
 
   .products-grid,

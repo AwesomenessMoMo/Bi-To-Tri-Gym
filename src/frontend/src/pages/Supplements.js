@@ -97,7 +97,10 @@ const Supplements = () => {
 
       <div className="supplements-content">
         <div className="header-row">
-          <h1>{category === "All" ? "Supplements" : category}</h1>
+          <div className="header-text">
+            <h1>{category === "All" ? "Supplements" : category}</h1>
+            <p className="page-subtitle">Fuel your fitness journey with premium supplements designed to maximize your performance and recovery</p>
+          </div>
 
           <div className="size-controls">
             <button className={cardSize === "small" ? "active" : ""} onClick={() => setCardSize("small")}>S</button>
