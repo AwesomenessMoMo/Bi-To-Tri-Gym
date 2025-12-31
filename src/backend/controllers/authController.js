@@ -20,17 +20,61 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
     const { email, password } = req.body;
 
-    db.query("SELECT * FROM users WHERE email = ?", [email], (err, result) => {
-        if (err || result.length === 0) return res.json({ error: "User not found" });
+    if (!email || !password) {
+        return res.status(400).json({ error: "Email and password are required" });
+    }
+
+    db.query("SELECT * FROM users WHERE LOWER(email) = ?", [email.toLowerCase()], (err, result) => {
+        if (err) {
+            console.error("Login database error:", err);
+            return res.status(500).json({ error: "Database error" });
+        }
+
+        if (result.length === 0) {
+            return res.status(401).json({ error: "Wrong credentials" });
+        }
 
         const user = result[0];
 
-        bcrypt.compare(password, user.password, (err, match) => {
-            if (!match) return res.json({ error: "Wrong credentials" });
+        // Check if password is bcrypt hashed (starts with $2a$ or $2b$)
+        const isBcryptHash = user.password && (user.password.startsWith('$2a$') || user.password.startsWith('$2b$'));
+
+        if (isBcryptHash) {
+            // Compare using bcrypt for hashed passwords
+            bcrypt.compare(password, user.password, (err, match) => {
+                if (err || !match) {
+                    return res.status(401).json({ error: "Wrong credentials" });
+                }
+
+                const token = jwt.sign({ id: user.id }, "SECRET123", { expiresIn: "1d" });
+
+                res.json({
+                    user: {
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                        role: user.role || 'user'
+                    },
+                    token
+                });
+            });
+        } else {
+            // Plain text password comparison (for existing users)
+            if (user.password !== password) {
+                return res.status(401).json({ error: "Wrong credentials" });
+            }
 
             const token = jwt.sign({ id: user.id }, "SECRET123", { expiresIn: "1d" });
 
-            res.json({ message: "Login success", token });
-        });
+            res.json({
+                user: {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    role: user.role || 'user'
+                },
+                token
+            });
+        }
     });
 };
