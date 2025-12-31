@@ -2,19 +2,6 @@
 
 A comprehensive gym management system that enables users to book coaches, purchase supplements and gym apparel, manage subscriptions, and access training programs. Built with Node.js backend and React.js frontend.
 
-## 📋 Table of Contents
-
-- [Project Description](#project-description)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Database Schema](#database-schema)
-- [Setup Instructions](#setup-instructions)
-- [API Endpoints](#api-endpoints)
-- [Code Snippets](#code-snippets)
-- [Deployment](#deployment)
-- [Screenshots](#screenshots)
-- [Future Scope](#future-scope)
-
 ## 🎯 Project Description
 
 **Bi To Tri Gym** is a full-stack web application designed to solve the real-world problem of managing a gym's operations digitally. The application automates:
@@ -158,20 +145,13 @@ The application uses MySQL with the following related entities:
    - `quantity`
    - `price`
 
-### Relationships
-- **Users ↔ Orders**: One-to-Many (One user can have many orders)
-- **Users ↔ Bookings**: One-to-Many (One user can have many bookings)
-- **Coaches ↔ Bookings**: One-to-Many (One coach can have many bookings)
-- **Cart ↔ Cart Items**: One-to-Many (One cart can have many items)
-- **Orders ↔ Order Items**: One-to-Many (One order can have many items)
-
 ## 🚀 Setup Instructions
 
 ### Prerequisites
 - Node.js (v14 or higher)
 - MySQL (v8.0 or higher)
 - Git
-- npm or yarn
+- npm 
 
 ### Backend Setup
 
@@ -387,9 +367,6 @@ CREATE TABLE order_items (
 ### Search
 - `GET /api/search?q=query` - Global search
 
-### Health Check
-- `GET /api/health` - Check backend and database status
-
 ## 💻 Code Snippets
 
 ### User Authentication with Password Hashing
@@ -506,30 +483,6 @@ db.getConnection((err, connection) => {
 module.exports = db;
 ```
 
-### CORS Configuration
-
-```javascript
-// src/backend/server.js
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || process.env.NODE_ENV !== 'production') {
-            return callback(null, true);
-        }
-        // Check allowed origins
-        const allowedOrigins = [
-            process.env.CLIENT_URL,
-            "https://bitotri-frontend-production.up.railway.app"
-        ];
-        if (allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(null, true); // Allow for development
-        }
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH']
-}));
-```
 
 ## 🚢 Deployment
 
@@ -587,38 +540,9 @@ The application is deployed on Railway for both backend and frontend.
 ### Admin Dashboard
 ![Admin](./screenshots/admin.png)
 ```
-
-## 🔮 Future Scope
-
-- [ ] Email notifications for bookings and orders
-- [ ] SMS notifications via Twilio
-- [ ] Payment gateway integration (Stripe/PayPal)
-- [ ] User profile management
-- [ ] Review and rating system
-- [ ] Advanced analytics dashboard
-- [ ] Mobile app (React Native)
-- [ ] Real-time chat support
-- [ ] Social media integration
-- [ ] Multi-language support
-
-## 📝 License
-
-This project is for educational purposes.
-
 ## 👤 Author
 
 **Mohamad el Masri**
 
 - GitHub: [@AwesomenessMoMo](https://github.com/AwesomenessMoMo)
 - Project Link: [https://github.com/AwesomenessMoMo/BiToTri](https://github.com/AwesomenessMoMo/BiToTri)
-
-## 🙏 Acknowledgments
-
-- React.js community
-- Express.js documentation
-- Material-UI components
-- Railway for hosting services
-
----
-
-**Built with ❤️ using Node.js and React.js**
