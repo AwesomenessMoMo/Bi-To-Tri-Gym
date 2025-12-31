@@ -8,11 +8,8 @@ function Store() {
   const navigate = useNavigate();
 
   return (
-    <div className="store-bg">  {}
-
+    <div className="store-bg">
       <div className="store-container">
-
-        {}
         <div className="store-header">
           <h1>Fuel Your Fitness Journey</h1>
           <p>
@@ -21,10 +18,7 @@ function Store() {
           </p>
         </div>
 
-        {}
         <div className="store-grid">
-
-          {/* SUPPLEMENTS */}
           <div
             className="store-item left-item"
             onClick={() => navigate("/Supplements")}
@@ -33,7 +27,6 @@ function Store() {
             <h2>Supplements</h2>
           </div>
 
-          {/* CLOTHES */}
           <div
             className="store-item right-item"
             onClick={() => navigate("/Clothes")}

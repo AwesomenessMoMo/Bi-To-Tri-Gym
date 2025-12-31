@@ -27,7 +27,6 @@ function Subplans() {
                 </p>
             </div>
 
-            {/* ===== MONTHLY PLANS ===== */}
             <h2 className="plan-section-title">Monthly Plans</h2>
             <div className="subplans-grid">
 
@@ -100,7 +99,6 @@ function Subplans() {
                 </div>
             </div>
 
-            {/* ===== ANNUAL PLANS ===== */}
             <h2 className="plan-section-title">Annual Plans</h2>
             <div className="subplans-grid">
 

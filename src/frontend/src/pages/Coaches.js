@@ -65,7 +65,6 @@ const Coaches = () => {
                 <p>{coach.specialty}</p>
               </div>
 
-              {/* Mobile: Show booking section inline below the clicked coach */}
               {selectedCoach?.id === coach.id && (
                 <div className="mobile-booking-section">
                   <CoachesSchedule
@@ -86,7 +85,6 @@ const Coaches = () => {
         )}
       </div>
 
-      {/* Desktop: Show booking section at the bottom */}
       {selectedCoach && (
         <div className="desktop-booking-section">
           <CoachesSchedule

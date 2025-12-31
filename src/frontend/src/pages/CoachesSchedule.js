@@ -65,7 +65,6 @@ const CoachesSchedule = ({ coach, image, specialty, bio, coachId }) => {
         <div className="inline-schedule-wrapper">
             <div className="inline-schedule-box">
 
-                {/* COACH PROFILE */}
                 <div className="coach-profile">
                     <img src={image} alt={coach} className="coach-img" />
 
@@ -76,7 +75,6 @@ const CoachesSchedule = ({ coach, image, specialty, bio, coachId }) => {
                     </div>
                 </div>
 
-                {/* CALENDAR */}
                 <div className="calendar-box">
                     <h2>Select a Date</h2>
                     <Calendar
@@ -86,7 +84,6 @@ const CoachesSchedule = ({ coach, image, specialty, bio, coachId }) => {
                     />
                 </div>
 
-                {/* TIME SLOTS */}
                 {selectedDate && (
                     <div className="time-section">
                         <h2>Select a Time</h2>
@@ -104,7 +101,6 @@ const CoachesSchedule = ({ coach, image, specialty, bio, coachId }) => {
                     </div>
                 )}
 
-                {/* CONFIRMATION */}
                 {selectedDate && selectedTime && (
                     <div className="confirmation">
                         <h3>Booking Summary</h3>
@@ -124,7 +120,6 @@ const CoachesSchedule = ({ coach, image, specialty, bio, coachId }) => {
                     </div>
                 )}
 
-                {/* SUCCESS POPUP */}
                 {showPopup && (
                     <div className="popup-overlay">
                         <div className="popup-box">

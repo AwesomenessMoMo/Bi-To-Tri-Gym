@@ -89,7 +89,6 @@ const TrainingProgram = () => {
             <div className="program-container">
                 <h1 className="program-title">Training Programs</h1>
 
-                {/* SUBTITLE */}
                 <p className="program-subtitle">
                     Structured plans built to match your goals, fitness level, and performance needs
                 </p>
