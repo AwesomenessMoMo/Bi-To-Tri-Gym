@@ -3,13 +3,15 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: #000;
-  color: #fff;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   padding: 12px 40px;
   box-sizing: border-box;
   position: sticky;
   top: 0;
   z-index: 2000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
 }
 
 
@@ -39,9 +41,9 @@
   width: 500px;
   padding: 10px 42px 10px 20px;
   border-radius: 50px;
-  border: 1px solid #333;
-  background: #111;
-  color: #fff;
+  border: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
   outline: none;
   transition: 0.25s ease;
   font-size: 0.9rem;
@@ -49,24 +51,24 @@
 }
 
 .search-input::placeholder {
-  color: #aaa;
+  color: var(--text-muted);
 }
 
 .search-input:focus {
-  border-color: red;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .search-icon {
   position: absolute;
   right: 14px;
-  color: #fff;
+  color: var(--text-primary);
   cursor: pointer;
   transition: 0.2s ease;
 }
 
 .search-container:hover .search-icon {
-  color: red;
+  color: var(--accent-color);
   transform: scale(1.1);
 }
 
@@ -76,8 +78,8 @@
   top: 48px;
   left: 0;
   right: 0;
-  background: #111;
-  border: 1px solid #333;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
   z-index: 5000;
@@ -87,15 +89,16 @@
   padding: 10px 14px;
   cursor: pointer;
   transition: 0.2s;
+  color: var(--text-primary);
 }
 
 .suggestion-item:hover {
-  background: red;
+  background: var(--accent-color);
 }
 
 .suggestion-type {
   font-size: 0.75rem;
-  color: #ddd;
+  color: var(--text-secondary);
 }
 
 
@@ -107,7 +110,7 @@
 
 .nav-links a,
 .nav-text-link {
-  color: #fff;
+  color: var(--text-primary);
   font-weight: bold;
   font-size: 1.3rem;
   cursor: pointer;
@@ -117,13 +120,40 @@
 
 .nav-links a:hover,
 .nav-text-link:hover {
-  color: red;
+  color: var(--accent-color);
 }
 
 .nav-user {
-  color: #ff4444;
+  color: var(--accent-color);
   font-size: 1.3rem;
   cursor: pointer;
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.theme-toggle-btn svg {
+  font-size: 1.5rem;
 }
 
 .user-dropdown {
@@ -135,15 +165,15 @@
   top: 140%;
   right: 0;
   width: 260px;
-  background: #111;
-  border: 1px solid #333;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 12px;
   z-index: 9999;
 }
 
 .user-menu h4 {
-  color: red;
+  color: var(--accent-color);
   margin-bottom: 8px;
 }
 
@@ -152,24 +182,25 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--border-color);
   padding: 6px 0;
+  color: var(--text-primary);
 }
 
 .cancel-btn {
   background: none;
   border: none;
-  color: #ff4d4d;
+  color: var(--accent-color);
   cursor: pointer;
 }
 
 .cancel-btn:hover {
-  color: red;
+  color: var(--accent-hover);
 }
 
 .logout-btn {
   margin-top: 10px;
-  color: #ff4d4d;
+  color: var(--accent-color);
   font-weight: bold;
   cursor: pointer;
 }
@@ -178,7 +209,12 @@
   display: none;
   background: none;
   border: none;
-  color: white;
+  color: var(--text-primary);
+}
+
+.empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 @media (max-width: 992px) {
@@ -203,10 +239,14 @@
     right: -260px;
     width: 260px;
     height: 100vh;
-    background: #111;
+    background: var(--bg-tertiary);
     flex-direction: column;
     justify-content: center;
     transition: right 0.35s ease;
+  }
+
+  .theme-toggle-btn {
+    margin: 10px 0;
   }
 
   .nav-links.opened {

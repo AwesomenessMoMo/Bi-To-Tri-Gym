@@ -6,11 +6,14 @@ import ReorderIcon from "@mui/icons-material/Reorder";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
+import { useTheme } from "../context/ThemeContext";
 import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
 import CartSidebar from "./CartSidebar";
 import axios from "axios";
 import API from "../config/api";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 function Navbar({ openMenu, toggleMenu }) {
   const navigate = useNavigate();
@@ -18,6 +21,7 @@ function Navbar({ openMenu, toggleMenu }) {
 
   const { user, isLoggedIn, logout } = useAuth();
   const { cart } = useCart();
+  const { theme, toggleTheme } = useTheme();
 
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -180,6 +184,10 @@ function Navbar({ openMenu, toggleMenu }) {
           <span className="nav-text-link" onClick={() => setOpenCart(true)}>
             🛒 Cart ({cart.length})
           </span>
+
+          <button className="theme-toggle-btn" onClick={toggleTheme} title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}>
+            {theme === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+          </button>
         </div>
 
         <button className="mobile-menu-icon" onClick={toggleMenu}>

@@ -1,7 +1,8 @@
 .footer {
-  background: #0b0b0b;
-  color: #ccc;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   padding: 60px 40px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer-grid {
