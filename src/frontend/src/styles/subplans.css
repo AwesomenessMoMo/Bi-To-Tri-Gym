@@ -1,5 +1,5 @@
 .subplans-container {
-    background: linear-gradient(90deg, #3a0d0d, #8b2b2b);
+    position: relative;
     color: #fff;
     text-align: center;
     min-height: 100vh;
@@ -14,6 +14,75 @@
 
     padding-top: 40px;  
     padding-bottom: 40px;
+}
+
+/* Animated Background */
+.subplans-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        #1a0000,
+        #3a0d0d,
+        #5a1a1a,
+        #8b2b2b,
+        #5a1a1a,
+        #3a0d0d,
+        #1a0000
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    z-index: 0;
+}
+
+.subplans-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%);
+    animation: pulseGlow 8s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+/* Ensure content is above background */
+.subplans-header,
+.plan-section-title,
+.subplans-grid {
+    position: relative;
+    z-index: 1;
 }
 
 .subplans-header {
