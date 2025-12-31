@@ -762,19 +762,6 @@ app.get("/api/search", (req, res) => {
     );
 });
 
-// Contact form route
-try {
-    const contactController = require("./controllers/contactController");
-    app.post("/api/contact", contactController.sendContactMessage);
-    console.log("✅ Contact form route registered: /api/contact");
-} catch (error) {
-    console.error("❌ Error loading contact controller:", error);
-    // Fallback route that returns an error
-    app.post("/api/contact", (req, res) => {
-        res.status(500).json({ message: "Contact service unavailable" });
-    });
-}
-
 
 const PORT = process.env.PORT || 8080;
 

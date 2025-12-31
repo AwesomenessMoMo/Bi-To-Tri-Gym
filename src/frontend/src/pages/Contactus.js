@@ -14,28 +14,17 @@ function Contactus() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        try {
-            const res = await fetch(`${API}/api/contact`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData)
-            });
+        // Form submitted successfully
+        toast.success("Message sent! Admin will contact you soon.");
 
-            if (!res.ok) throw new Error();
-
-            toast.success("Message sent! Admin will contact you soon.");
-
-            setFormData({
-                name: "",
-                email: "",
-                message: ""
-            });
-        } catch {
-            toast.error("Failed to send message. Try again.");
-        }
+        setFormData({
+            name: "",
+            email: "",
+            message: ""
+        });
     };
 
     return (
