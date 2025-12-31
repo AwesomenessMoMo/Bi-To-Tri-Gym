@@ -1,12 +1,9 @@
 const mysql = require("mysql2");
 
-// Load environment variables for local development
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-// Support both standard format (MYSQL_HOST) and Railway format (MYSQLHOST)
-// Priority: Environment variables > Local defaults
 const db = mysql.createPool({
   host: process.env.MYSQL_HOST || process.env.MYSQLHOST || "localhost",
   user: process.env.MYSQL_USER || process.env.MYSQLUSER || "root",
@@ -18,7 +15,6 @@ const db = mysql.createPool({
   queueLimit: 0
 });
 
-// Test database connection on startup
 db.getConnection((err, connection) => {
   if (err) {
     console.error("❌ Database connection failed:", err.message);

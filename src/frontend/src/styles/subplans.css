@@ -16,7 +16,6 @@
     padding-bottom: 40px;
 }
 
-/* Animated Background - Multi-layer gradient animation */
 .subplans-container::before {
     content: "";
     position: absolute;
@@ -112,7 +111,6 @@
     }
 }
 
-/* Ensure content is above background */
 .subplans-header,
 .plan-section-title,
 .subplans-grid {
@@ -253,7 +251,6 @@
     margin-left: 6px;
 }
 
-/* Responive */
 @media (max-width: 700px) {
     .subplans-header h1 {
         font-size: 1.9rem;

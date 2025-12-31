@@ -10,7 +10,6 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 
-// CORS must be configured BEFORE any routes
 const allowedOrigins = [
     process.env.CLIENT_URL,
     process.env.RAILWAY_PUBLIC_DOMAIN,
@@ -19,25 +18,20 @@ const allowedOrigins = [
     "http://localhost:3000"
 ].filter(Boolean); 
 
-// CORS configuration - MUST be before any routes to handle preflight OPTIONS requests
 app.use(cors({
     origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
         if (!origin) {
             return callback(null, true);
         }
 
-        // In development, allow all origins
         if (process.env.NODE_ENV !== 'production') {
             return callback(null, true);
         }
 
-        // Check exact match first
         if (allowedOrigins.includes(origin)) {
             return callback(null, true);
         }
 
-        // Check domain match (handle Railway subdomains)
         const originDomain = origin.replace(/^https?:\/\//, '').toLowerCase();
         const isAllowed = allowedOrigins.some(allowed => {
             if (!allowed) return false;
@@ -49,7 +43,6 @@ app.use(cors({
             return callback(null, true);
         }
 
-        // Log the issue but allow to prevent blocking
         console.warn('CORS: Origin not in allowed list:', origin);
         console.warn('Allowed origins:', allowedOrigins);
         callback(null, true);
@@ -207,13 +200,12 @@ app.post("/api/login", (req, res) => {
                     email: r[0].email,
                     role: r[0].role
                 },
-                token: null // Plain text password auth - no JWT token needed
+                token: null
             });
         }
     );
 });
 
-// Also support /api/auth/login endpoint for frontend compatibility
 app.post("/api/auth/login", (req, res) => {
     const { email, password } = req.body;
 
@@ -241,7 +233,7 @@ app.post("/api/auth/login", (req, res) => {
                     email: r[0].email,
                     role: r[0].role
                 },
-                token: null // Plain text password auth - no JWT token needed
+                token: null
             });
         }
     );

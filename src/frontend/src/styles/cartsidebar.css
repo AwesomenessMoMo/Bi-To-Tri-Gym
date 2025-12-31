@@ -164,8 +164,6 @@
     background: #cc0000;
 }
 
-
-/* Animnation */
 @keyframes slideIn {
     from {
         transform: translateX(100%);

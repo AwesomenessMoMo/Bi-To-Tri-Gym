@@ -193,7 +193,6 @@
   cursor: pointer;
 }
 
-/* TABLET + MOBILE → ALWAYS 2 PER ROW */
 @media (max-width: 1024px) {
   .size-controls {
     display: none;
@@ -254,7 +253,6 @@
   }
 }
 
-/* MOBILE PHONES - EVEN SMALLER */
 @media (max-width: 480px) {
   .filter-sidebar {
     padding: 1rem;

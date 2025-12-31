@@ -40,7 +40,6 @@ function App() {
         <ScrollToTop />
         <Navbar toggleMenu={toggleMenu} openMenu={openMenu} />
 
-        {/* Toast Popup */}
         <ToastContainer
           position="bottom-left"
           autoClose={500}
@@ -66,8 +65,6 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/product/:type/:id" element={<ProductDetails />} />
 
-
-          {/* Protected Routes*/}
           <Route
             path="/admin"
             element={

@@ -8,7 +8,6 @@
     center/cover no-repeat fixed;
 }
 
-/* Dark overlay for readability */
 .store-bg::before {
   content: "";
   position: absolute;
@@ -114,7 +113,6 @@
   to { transform: translateX(0); opacity: 1; }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .store-grid {
     flex-direction: column;

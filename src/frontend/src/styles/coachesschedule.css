@@ -193,7 +193,6 @@
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.65);
 }
 
-/* Popup Animation */
 @keyframes popupFade {
     from {
         opacity: 0;
@@ -205,7 +204,6 @@
     }
 }
 
-/* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .inline-schedule-wrapper {
         padding: 1.5rem 1rem;
@@ -216,7 +214,6 @@
         border-radius: 15px;
     }
 
-    /* When used inline in mobile booking section */
     .mobile-booking-section .inline-schedule-wrapper {
         padding: 1rem 0;
     }
@@ -335,7 +332,6 @@
         border-radius: 12px;
     }
 
-    /* When used inline in mobile booking section */
     .mobile-booking-section .inline-schedule-wrapper {
         padding: 0.75rem 0;
     }

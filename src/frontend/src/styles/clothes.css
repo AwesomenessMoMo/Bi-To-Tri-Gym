@@ -167,7 +167,6 @@
   cursor: pointer;
 }
 
-/* TABLET & MOBILE */
 @media (max-width: 1024px) {
   .size-controls {
     display: none;

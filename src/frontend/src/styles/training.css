@@ -7,7 +7,6 @@
         no-repeat center center/cover;
 }
 
-/* REMOVED BLACK BOX OVERLAY */
 .program-container::after {
     display: none;
 }
@@ -37,7 +36,6 @@
     font-size: 1.05rem;
 }
 
-/* CARDS FLOAT ON BACKGROUND */
 .program-card {
     position: relative;
     z-index: 1;
@@ -116,7 +114,6 @@
     opacity: 0.9;
 }
 
-/* MODAL */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -196,7 +193,6 @@
     to { transform: scale(1); opacity: 1; }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
     .program-card {
         padding: 1.6rem;

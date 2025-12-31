@@ -17,7 +17,6 @@ function Contactus() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Form submitted successfully
         toast.success("Message sent! Admin will contact you soon.");
 
         setFormData({

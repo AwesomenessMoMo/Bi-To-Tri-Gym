@@ -84,7 +84,6 @@ function Navbar({ openMenu, toggleMenu }) {
   };
 
   const handleLogout = () => {
-    // Logout is handled client-side (clears localStorage)
     logout();
     navigate("/home");
   };
