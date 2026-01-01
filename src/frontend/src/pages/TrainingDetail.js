@@ -9,7 +9,7 @@ const TrainingDetail = () => {
 
     const getWorkoutPlan = (programTitle) => {
         const plans = {
-            "🏁 Beginner Full-Body Program": {
+            "Beginner Full-Body Program": {
                 weeks: [
                     {
                         week: 1,
@@ -61,7 +61,7 @@ const TrainingDetail = () => {
                     }
                 ]
             },
-            "🔥 Weight Loss / Fat Burn Program": {
+            "Weight Loss / Fat Burn Program": {
                 weeks: [
                     {
                         week: 1,
@@ -113,7 +113,7 @@ const TrainingDetail = () => {
                     }
                 ]
             },
-            "💪 Muscle Gain (Hypertrophy)": {
+            "Muscle Gain (Hypertrophy)": {
                 weeks: [
                     {
                         week: 1,
@@ -165,7 +165,7 @@ const TrainingDetail = () => {
                     }
                 ]
             },
-            "🏋️ Strength Training (Power)": {
+            "Strength Training (Power)": {
                 weeks: [
                     {
                         week: 1,
@@ -217,7 +217,7 @@ const TrainingDetail = () => {
                     }
                 ]
             },
-            "⚡ Athlete Conditioning Program": {
+            "Athlete Conditioning Program": {
                 weeks: [
                     {
                         week: 1,
@@ -269,7 +269,7 @@ const TrainingDetail = () => {
                     }
                 ]
             },
-            "🏆 5-Day Bodybuilding Split": {
+            "5-Day Bodybuilding Split": {
                 weeks: [
                     {
                         week: 1,
@@ -326,12 +326,12 @@ const TrainingDetail = () => {
     };
 
     const programs = [
-        { title: "🏁 Beginner Full-Body Program", short: "Perfect for newcomers learning the basics.", details: "Light weights, form training, mobility sessions, and gradual strength progression." },
-        { title: "🔥 Weight Loss / Fat Burn Program", short: "High-intensity calorie-burning routine.", details: "HIIT, circuits, fat-burn cardio, and metabolic conditioning sessions." },
-        { title: "💪 Muscle Gain (Hypertrophy)", short: "Maximize muscle growth and strength.", details: "High-volume workouts, progressive overload, and targeted muscle isolation." },
-        { title: "🏋️ Strength Training (Power)", short: "Focused on heavy compound lifting.", details: "5×5 strength training, low reps, heavy weight, and progressive overload." },
-        { title: "⚡ Athlete Conditioning Program", short: "Speed, agility, explosiveness.", details: "Plyometrics, sprints, explosive movements, and high-performance conditioning." },
-        { title: "🏆 5-Day Bodybuilding Split", short: "Classic physique-building training.", details: "Body-part splits, high volume, and maximum muscle isolation." },
+        { title: "Beginner Full-Body Program", short: "Perfect for newcomers learning the basics.", details: "Light weights, form training, mobility sessions, and gradual strength progression." },
+        { title: "Weight Loss / Fat Burn Program", short: "High-intensity calorie-burning routine.", details: "HIIT, circuits, fat-burn cardio, and metabolic conditioning sessions." },
+        { title: "Muscle Gain (Hypertrophy)", short: "Maximize muscle growth and strength.", details: "High-volume workouts, progressive overload, and targeted muscle isolation." },
+        { title: "Strength Training (Power)", short: "Focused on heavy compound lifting.", details: "5×5 strength training, low reps, heavy weight, and progressive overload." },
+        { title: "Athlete Conditioning Program", short: "Speed, agility, explosiveness.", details: "Plyometrics, sprints, explosive movements, and high-performance conditioning." },
+        { title: "5-Day Bodybuilding Split", short: "Classic physique-building training.", details: "Body-part splits, high volume, and maximum muscle isolation." },
     ];
 
     const decodedName = decodeURIComponent(name);
@@ -371,7 +371,7 @@ const TrainingDetail = () => {
     };
 
     const getCleanTitle = (title) => {
-        return title.replace(/[🏁🔥💪🏋️⚡🏆]/g, "").trim();
+        return title.trim();
     };
 
     const generatePDFContent = (doc) => {
