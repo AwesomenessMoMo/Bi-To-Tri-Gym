@@ -127,6 +127,10 @@ const Supplements = () => {
                 <h3>{item.name}</h3>
               </Link>
 
+              {item.description && (
+                <p className="product-description">{item.description}</p>
+              )}
+
               <p>${item.price}</p>
               <p className="serving-size">
                 Serving Size: {item.serving_size || "N/A"}
