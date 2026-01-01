@@ -11,6 +11,7 @@ import Clothes from './pages/Clothes';
 import Contactus from './pages/Contactus';
 import Subplans from './pages/Subplans';
 import TrainingProgram from './pages/TrainingPrograms';
+import TrainingDetail from './pages/TrainingDetail';
 import ScrollToTop from "./components/ScrollToTop";
 import FAQ from './pages/faq';
 import Schedule from './pages/CoachesSchedule';
@@ -60,6 +61,7 @@ function App() {
           <Route path="/contact-us" element={<Contactus />} />
           <Route path="/subplans" element={<Subplans />} />
           <Route path="/training-programs" element={<TrainingProgram />} />
+          <Route path="/training-detail/:name" element={<TrainingDetail />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/checkout" element={<Checkout />} />
