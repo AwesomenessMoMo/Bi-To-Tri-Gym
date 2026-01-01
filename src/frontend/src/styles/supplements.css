@@ -185,12 +185,12 @@
 }
 
 .product-card .serving-size {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-secondary);
   margin: 0.8rem 0 1rem 0;
   text-shadow: none;
-  opacity: 0.9;
+  letter-spacing: 0.3px;
 }
 
 .product-card button {
