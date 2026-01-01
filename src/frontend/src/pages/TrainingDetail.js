@@ -376,25 +376,10 @@ const TrainingDetail = () => {
 
     const generatePDFContent = (doc) => {
         const cleanTitle = getCleanTitle(program.title);
-        let y = 20;
+        let y = 70;
         const pageWidth = 210;
         const margin = 20;
         const contentWidth = pageWidth - (margin * 2);
-
-        doc.setDrawColor(200, 0, 0);
-        doc.setFillColor(200, 0, 0);
-        doc.rect(margin, y, contentWidth, 8, "F");
-        y += 15;
-
-        doc.setTextColor(200, 0, 0);
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(24);
-        doc.text("BI TO TRI GYM", margin, y, { align: "left" });
-        y += 8;
-
-        doc.setFontSize(18);
-        doc.text("TRAINING PROGRAM", margin, y, { align: "left" });
-        y += 15;
 
         doc.setTextColor(0, 0, 0);
         doc.setFont("helvetica", "bold");
@@ -515,42 +500,6 @@ const TrainingDetail = () => {
                 }
             });
         }
-
-        y += 10;
-        if (y > 250) {
-            doc.addPage();
-            y = 20;
-        }
-
-        doc.setDrawColor(200, 0, 0);
-        doc.setLineWidth(0.5);
-        doc.line(margin, y, pageWidth - margin, y);
-        y += 10;
-
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(11);
-        doc.text("Important Notes:", margin, y);
-        y += 7;
-
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(9);
-        const notes = [
-            "• Always warm up for 5-10 minutes before each workout",
-            "• Cool down and stretch after each session",
-            "• Rest 48-72 hours between training the same muscle groups",
-            "• Progressively increase weight or reps each week",
-            "• Stay hydrated and maintain a balanced diet",
-            "• Listen to your body and adjust intensity as needed"
-        ];
-
-        notes.forEach(note => {
-            if (y > 270) {
-                doc.addPage();
-                y = 20;
-            }
-            doc.text(note, margin + 5, y);
-            y += 6;
-        });
 
         const totalPages = doc.internal.getNumberOfPages();
         for (let i = 1; i <= totalPages; i++) {
