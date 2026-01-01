@@ -184,6 +184,14 @@
   text-shadow: 0 0 18px var(--shadow-color);
 }
 
+.product-card .serving-size {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+  text-shadow: none;
+}
+
 .product-card button {
   width: 100%;
   padding: 10px;

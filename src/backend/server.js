@@ -541,7 +541,7 @@ app.put("/api/admin/coaches/:id/image", upload.single("image"), (req, res) => {
 
 
 app.post("/api/admin/supplements", upload.single("image"), (req, res) => {
-    const { name, category, description, price } = req.body;
+    const { name, category, description, price, serving_size } = req.body;
     const image = req.file ? req.file.filename : null;
 
     if (!name || !category || !description || !price) {
@@ -549,9 +549,9 @@ app.post("/api/admin/supplements", upload.single("image"), (req, res) => {
     }
 
     db.query(
-        `INSERT INTO supplements (name, category, description, price, image)
-         VALUES (?, ?, ?, ?, ?)`,
-        [name, category, description, price, image],
+        `INSERT INTO supplements (name, category, description, price, serving_size, image)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+        [name, category, description, price, serving_size || null, image],
         (err) => {
             if (err) {
                 console.error(err);

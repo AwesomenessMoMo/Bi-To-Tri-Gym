@@ -52,6 +52,34 @@
     max-width: 560px;
 }
 
+.size-selector-detail {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.size-selector-detail label {
+    color: #ddd;
+    font-size: 1.05rem;
+}
+
+.size-selector-detail select {
+    padding: 8px 12px;
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.size-selector-detail select:focus {
+    outline: none;
+    border-color: #ff0000;
+}
+
 .price {
     font-size: 2.4rem;
     font-weight: 800;

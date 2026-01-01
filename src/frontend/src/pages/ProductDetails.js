@@ -13,6 +13,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState(null);
     const [related, setRelated] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedSize, setSelectedSize] = useState("M");
 
     useEffect(() => {
         fetch(`${API}/api/${type}/${id}`)
@@ -43,13 +44,18 @@ const ProductDetails = () => {
     if (!product) return null;
 
     const handleAdd = () => {
-        addToCart({
+        const cartItem = {
             id: product.id,
-            name: product.name,
+            name: type === "clothes" ? `${product.name} (Size: ${selectedSize})` : product.name,
             price: product.price,
             type
-        });
-        toast.success(`${product.name} added to cart`);
+        };
+        if (type === "clothes") {
+            cartItem.size = selectedSize;
+        }
+        addToCart(cartItem);
+        const sizeText = type === "clothes" ? ` (Size: ${selectedSize})` : "";
+        toast.success(`${product.name}${sizeText} added to cart`);
     };
 
     const fallbackDescription =
@@ -78,6 +84,22 @@ const ProductDetails = () => {
                         <p className="desc">
                             <strong>Color:</strong> {product.color}
                         </p>
+                    )}
+
+                    {type === "clothes" && (
+                        <div className="size-selector-detail">
+                            <label><strong>Size:</strong></label>
+                            <select 
+                                value={selectedSize} 
+                                onChange={(e) => setSelectedSize(e.target.value)}
+                            >
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                        </div>
                     )}
 
                     <div className="price">${product.price}</div>

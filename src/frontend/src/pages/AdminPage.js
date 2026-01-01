@@ -21,7 +21,7 @@ const AdminPage = () => {
   const [bookings, setBookings] = useState([]);
 
   const [newCoach, setNewCoach] = useState({ name:"", specialty:"", image:null, preview:null });
-  const [newSupplement, setNewSupplement] = useState({ name:"", category:SUPPLEMENT_CATEGORIES[0], description:"", price:"", image:null, preview:null });
+  const [newSupplement, setNewSupplement] = useState({ name:"", category:SUPPLEMENT_CATEGORIES[0], description:"", price:"", serving_size:"", image:null, preview:null });
   const [newClothes, setNewClothes] = useState({ name:"", category:CLOTHES_CATEGORIES[0], price:"", color:"", image:null, preview:null });
 
   const loadData = () => {
@@ -185,6 +185,7 @@ const AdminPage = () => {
             </select>
             <textarea placeholder="Description" onChange={e=>setNewSupplement({...newSupplement,description:e.target.value})}/>
             <input type="number" placeholder="Price" onChange={e=>setNewSupplement({...newSupplement,price:e.target.value})}/>
+            <input placeholder="Serving Size (e.g., 1 scoop, 2 capsules)" onChange={e=>setNewSupplement({...newSupplement,serving_size:e.target.value})}/>
 
             <button className="change-image-btn" onClick={()=>document.getElementById("suppImg").click()}>
               Upload image
@@ -194,7 +195,7 @@ const AdminPage = () => {
 
             <button className="primary"
               onClick={()=>addItem(`${API}/api/admin/supplements`,newSupplement,
-                ()=>setNewSupplement({name:"",category:SUPPLEMENT_CATEGORIES[0],description:"",price:"",image:null,preview:null}))}>
+                ()=>setNewSupplement({name:"",category:SUPPLEMENT_CATEGORIES[0],description:"",price:"",serving_size:"",image:null,preview:null}))}>
               Add Supplement
             </button>
           </div>

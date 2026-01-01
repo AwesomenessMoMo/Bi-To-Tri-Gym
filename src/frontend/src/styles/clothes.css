@@ -158,6 +158,36 @@
   color: var(--text-muted);
 }
 
+.clothes-card .size-selector {
+  margin: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.clothes-card .size-selector label {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.clothes-card .size-selector select {
+  padding: 6px 10px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.clothes-card .size-selector select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
 .clothes-card button {
   width: 100%;
   padding: 10px;
