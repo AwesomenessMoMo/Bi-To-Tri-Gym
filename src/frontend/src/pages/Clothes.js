@@ -15,7 +15,6 @@ const Clothes = () => {
   const [color, setColor] = useState("All");
   const [sortType, setSortType] = useState("");
   const [cardSize, setCardSize] = useState("large");
-  const [selectedSizes, setSelectedSizes] = useState({});
 
   useEffect(() => {
     fetch(`${API}/api/clothes`)
@@ -47,16 +46,14 @@ const Clothes = () => {
     });
 
   const handleAddToCart = (item) => {
-    const selectedSize = selectedSizes[item.id] || "M";
     addToCart({
       id: item.id,
-      name: `${item.name} (Size: ${selectedSize})`,
+      name: item.name,
       price: item.price,
       image: item.image,
       type: "clothes",
-      size: selectedSize,
     });
-    toast.success(`${item.name} (Size: ${selectedSize}) added to cart`);
+    toast.success(`${item.name} added to cart`);
   };
 
   return (
@@ -142,19 +139,6 @@ const Clothes = () => {
 
               <p className="price">${item.price}</p>
               <p className="color">Color: {item.color}</p>
-              <div className="size-selector">
-                <label>Size:</label>
-                <select 
-                  value={selectedSizes[item.id] || "M"} 
-                  onChange={(e) => setSelectedSizes({...selectedSizes, [item.id]: e.target.value})}
-                >
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                  <option value="XXL">XXL</option>
-                </select>
-              </div>
               <button onClick={() => handleAddToCart(item)}>Add to Cart</button>
             </div>
           ))}

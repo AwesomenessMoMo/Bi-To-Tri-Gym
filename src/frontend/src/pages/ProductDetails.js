@@ -86,6 +86,12 @@ const ProductDetails = () => {
                         </p>
                     )}
 
+                    {type === "supplements" && product.serving_size && (
+                        <p className="desc">
+                            <strong>Serving Size:</strong> {product.serving_size}
+                        </p>
+                    )}
+
                     {type === "clothes" && (
                         <div className="size-selector-detail">
                             <label><strong>Size:</strong></label>
