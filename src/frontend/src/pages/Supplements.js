@@ -132,9 +132,6 @@ const Supplements = () => {
               )}
 
               <p className="product-price">${item.price}</p>
-              <p className="serving-size">
-                Serving Size: {item.serving_size || "N/A"}
-              </p>
               <button onClick={() => handleAddToCart(item)}>Add to Cart</button>
             </div>
           ))}
