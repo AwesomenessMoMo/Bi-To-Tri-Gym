@@ -334,8 +334,20 @@ const TrainingDetail = () => {
         { title: "5-Day Bodybuilding Split", short: "Classic physique-building training.", details: "Body-part splits, high volume, and maximum muscle isolation." },
     ];
 
-    const decodedName = decodeURIComponent(name);
-    const program = programs.find(p => p.title === decodedName);
+    let decodedName;
+    try {
+        decodedName = decodeURIComponent(name).trim();
+    } catch (e) {
+        decodedName = name.trim();
+    }
+    
+    const normalizeString = (str) => str.trim().toLowerCase().replace(/\s+/g, ' ');
+    
+    const program = programs.find(p => {
+        const normalizedTitle = normalizeString(p.title);
+        const normalizedDecoded = normalizeString(decodedName);
+        return normalizedTitle === normalizedDecoded;
+    });
 
     if (!program) {
         return (
