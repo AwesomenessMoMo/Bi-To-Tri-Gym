@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import API from "../config/api";
 
-const CoachesSchedule = ({ coach, image, specialty, bio, coachId }) => {
+const CoachesSchedule = ({ coach, image, specialty, coachId }) => {
     const { user } = useAuth();
     const navigate = useNavigate();
 
@@ -71,7 +71,6 @@ const CoachesSchedule = ({ coach, image, specialty, bio, coachId }) => {
                     <div className="coach-info">
                         <h1>{coach}</h1>
                         <h3>{specialty}</h3>
-                        <p>{bio}</p>
                     </div>
                 </div>
 

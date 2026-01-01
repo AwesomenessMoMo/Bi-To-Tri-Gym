@@ -20,7 +20,7 @@ const AdminPage = () => {
   const [clothes, setClothes] = useState([]);
   const [bookings, setBookings] = useState([]);
 
-  const [newCoach, setNewCoach] = useState({ name:"", specialty:"", bio:"", image:null, preview:null });
+  const [newCoach, setNewCoach] = useState({ name:"", specialty:"", image:null, preview:null });
   const [newSupplement, setNewSupplement] = useState({ name:"", category:SUPPLEMENT_CATEGORIES[0], description:"", price:"", image:null, preview:null });
   const [newClothes, setNewClothes] = useState({ name:"", category:CLOTHES_CATEGORIES[0], price:"", color:"", image:null, preview:null });
 
@@ -143,7 +143,6 @@ const AdminPage = () => {
           <div className="form-grid">
             <input placeholder="Name" onChange={e=>setNewCoach({...newCoach,name:e.target.value})}/>
             <input placeholder="Specialty" onChange={e=>setNewCoach({...newCoach,specialty:e.target.value})}/>
-            <textarea placeholder="Bio" onChange={e=>setNewCoach({...newCoach,bio:e.target.value})}/>
 
             <button className="change-image-btn" onClick={()=>document.getElementById("coachImg").click()}>
               Upload image
@@ -153,7 +152,7 @@ const AdminPage = () => {
 
             <button className="primary"
               onClick={()=>addItem(`${API}/api/admin/coaches`,newCoach,
-                ()=>setNewCoach({name:"",specialty:"",bio:"",image:null,preview:null}))}>
+                ()=>setNewCoach({name:"",specialty:"",image:null,preview:null}))}>
               Add Coach
             </button>
           </div>

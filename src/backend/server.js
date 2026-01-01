@@ -482,10 +482,10 @@ app.delete("/api/user/bookings/:bookingId/:userId", (req, res) => {
 
 
 app.post("/api/admin/coaches", upload.single("image"), (req, res) => {
-    const { name, specialty, bio } = req.body;
+    const { name, specialty } = req.body;
     const image = req.file ? req.file.filename : null;
 
-    if (!name || !specialty || !bio) {
+    if (!name || !specialty) {
         return res.status(400).json({ message: "Missing fields" });
     }
 

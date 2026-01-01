@@ -6,12 +6,12 @@ const TrainingProgram = () => {
     const navigate = useNavigate();
 
     const programs = [
-        { title: "🏁 Beginner Full-Body Program", short: "Perfect for newcomers learning the basics.", details: "Light weights, form training, mobility sessions, and gradual strength progression." },
-        { title: "🔥 Weight Loss / Fat Burn Program", short: "High-intensity calorie-burning routine.", details: "HIIT, circuits, fat-burn cardio, and metabolic conditioning sessions." },
-        { title: "💪 Muscle Gain (Hypertrophy)", short: "Maximize muscle growth and strength.", details: "High-volume workouts, progressive overload, and targeted muscle isolation." },
-        { title: "🏋️ Strength Training (Power)", short: "Focused on heavy compound lifting.", details: "5×5 strength training, low reps, heavy weight, and progressive overload." },
-        { title: "⚡ Athlete Conditioning Program", short: "Speed, agility, explosiveness.", details: "Plyometrics, sprints, explosive movements, and high-performance conditioning." },
-        { title: "🏆 5-Day Bodybuilding Split", short: "Classic physique-building training.", details: "Body-part splits, high volume, and maximum muscle isolation." },
+        { title: "Beginner Full-Body Program", short: "Perfect for newcomers learning the basics.", details: "Light weights, form training, mobility sessions, and gradual strength progression." },
+        { title: "Weight Loss / Fat Burn Program", short: "High-intensity calorie-burning routine.", details: "HIIT, circuits, fat-burn cardio, and metabolic conditioning sessions." },
+        { title: "Muscle Gain (Hypertrophy)", short: "Maximize muscle growth and strength.", details: "High-volume workouts, progressive overload, and targeted muscle isolation." },
+        { title: "Strength Training (Power)", short: "Focused on heavy compound lifting.", details: "5×5 strength training, low reps, heavy weight, and progressive overload." },
+        { title: "Athlete Conditioning Program", short: "Speed, agility, explosiveness.", details: "Plyometrics, sprints, explosive movements, and high-performance conditioning." },
+        { title: "5-Day Bodybuilding Split", short: "Classic physique-building training.", details: "Body-part splits, high volume, and maximum muscle isolation." },
     ];
 
     const handleProgramClick = (program) => {

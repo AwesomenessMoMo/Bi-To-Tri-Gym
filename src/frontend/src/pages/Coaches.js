@@ -76,7 +76,6 @@ const Coaches = () => {
                         : "/images/placeholder.png"
                     }
                     specialty={selectedCoach.specialty}
-                    bio={selectedCoach.bio}
                   />
                 </div>
               )}
@@ -96,7 +95,6 @@ const Coaches = () => {
                 : "/images/placeholder.png"
             }
             specialty={selectedCoach.specialty}
-            bio={selectedCoach.bio}
           />
         </div>
       )}
