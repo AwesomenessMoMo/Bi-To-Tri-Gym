@@ -21,7 +21,7 @@ const AdminPage = () => {
   const [bookings, setBookings] = useState([]);
 
   const [newCoach, setNewCoach] = useState({ name:"", specialty:"", image:null, preview:null });
-  const [newSupplement, setNewSupplement] = useState({ name:"", category:SUPPLEMENT_CATEGORIES[0], description:"", price:"", serving_size:"", image:null, preview:null });
+  const [newSupplement, setNewSupplement] = useState({ name:"", category:SUPPLEMENT_CATEGORIES[0], description:"", price:"", image:null, preview:null });
   const [newClothes, setNewClothes] = useState({ name:"", category:CLOTHES_CATEGORIES[0], price:"", color:"", image:null, preview:null });
 
   const loadData = () => {
@@ -185,7 +185,6 @@ const AdminPage = () => {
             </select>
             <textarea placeholder="Description" onChange={e=>setNewSupplement({...newSupplement,description:e.target.value})}/>
             <input type="number" placeholder="Price" onChange={e=>setNewSupplement({...newSupplement,price:e.target.value})}/>
-            <input placeholder="Serving Size (e.g., 1 scoop, 2 capsules)" onChange={e=>setNewSupplement({...newSupplement,serving_size:e.target.value})}/>
 
             <button className="change-image-btn" onClick={()=>document.getElementById("suppImg").click()}>
               Upload image
@@ -195,7 +194,7 @@ const AdminPage = () => {
 
             <button className="primary"
               onClick={()=>addItem(`${API}/api/admin/supplements`,newSupplement,
-                ()=>setNewSupplement({name:"",category:SUPPLEMENT_CATEGORIES[0],description:"",price:"",serving_size:"",image:null,preview:null}))}>
+                ()=>setNewSupplement({name:"",category:SUPPLEMENT_CATEGORIES[0],description:"",price:"",image:null,preview:null}))}>
               Add Supplement
             </button>
           </div>
@@ -208,7 +207,10 @@ const AdminPage = () => {
             {supplements.map(s=>(
               <li key={s.id}>
                 <img src={IMG(s.image)} className="admin-thumb large" alt={s.name} />
-                <span>{s.name} — {s.category} (${s.price})</span>
+                <div className="admin-item-info">
+                  <span className="admin-item-name">{s.name} — {s.category} (${s.price})</span>
+                  {s.description && <p className="admin-item-description">{s.description}</p>}
+                </div>
                 <button className="change-image-btn" onClick={()=>document.getElementById(`s${s.id}`).click()}>Change Image</button>
                 <input id={`s${s.id}`} type="file" className="edit-image-input"
                   onChange={e=>updateImage(`${API}/api/admin/supplements/${s.id}/image`,e.target.files[0])}/>
